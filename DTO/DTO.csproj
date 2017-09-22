@@ -40,10 +40,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Categoria.cs" />
+    <Compile Include="Cidade.cs" />
+    <Compile Include="ContaPagar.cs" />
+    <Compile Include="ContaReceber.cs" />
+    <Compile Include="Dizimo.cs" />
     <Compile Include="Endereco.cs" />
+    <Compile Include="Estado.cs" />
+    <Compile Include="Evento.cs" />
+    <Compile Include="ForcaDaSenha.cs" />
     <Compile Include="Funcao.cs" />
+    <Compile Include="ItemVenda.cs" />
     <Compile Include="Membro.cs" />
+    <Compile Include="Oferta.cs" />
+    <Compile Include="Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Publico.cs" />
+    <Compile Include="StatusPagamento.cs" />
+    <Compile Include="TipoContaPagar.cs" />
+    <Compile Include="Usuario.cs" />
+    <Compile Include="Venda.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

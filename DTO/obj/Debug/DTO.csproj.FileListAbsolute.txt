@@ -4,3 +4,9 @@ C:\Users\suporte 24\source\repos\ProjetoIntegrado\DTO\obj\Debug\DTO.csprojResolv
 C:\Users\suporte 24\source\repos\ProjetoIntegrado\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
 C:\Users\suporte 24\source\repos\ProjetoIntegrado\DTO\obj\Debug\DTO.dll
 C:\Users\suporte 24\source\repos\ProjetoIntegrado\DTO\obj\Debug\DTO.pdb
+C:\Users\suporte 24\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DTO\bin\Debug\DTO.dll
+C:\Users\suporte 24\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DTO\bin\Debug\DTO.pdb
+C:\Users\suporte 24\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DTO\obj\Debug\DTO.csprojResolveAssemblyReference.cache
+C:\Users\suporte 24\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DTO\obj\Debug\DTO.csproj.CoreCompileInputs.cache
+C:\Users\suporte 24\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DTO\obj\Debug\DTO.dll
+C:\Users\suporte 24\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DTO\obj\Debug\DTO.pdb
