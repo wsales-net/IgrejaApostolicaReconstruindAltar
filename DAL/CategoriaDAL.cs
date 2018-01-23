@@ -7,17 +7,17 @@ using System.Data.OleDb;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace DAL
 {
-
-    public class CategoriaDAO
+    class CategoriaDAL
     {
-        private OleDbConnection conexao;
-        private OleDbCommand cmd;
-        private OleDbDataReader dr;
+        private static OleDbConnection conexao;
+        private static OleDbCommand cmd;
+        private static OleDbDataReader dr;
 
-        public DataTable FindAll()
+        public static DataTable FindAll()
         {
             DataTable dt = new DataTable();
             string sql = "";
@@ -43,8 +43,7 @@ namespace DAL
             }
             return dt;
         }
-
-        public Categoria FindById(string id)
+        public static Categoria FindById(string id)
         {
             string sql = "";
             Categoria cat = new Categoria();
@@ -74,8 +73,7 @@ namespace DAL
             }
             return cat;
         }
-
-        public Categoria FindByDesc(string desc)
+        public static Categoria FindByDesc(string desc)
         {
             string sql = "";
             Categoria cat = new Categoria();
@@ -105,18 +103,16 @@ namespace DAL
             }
             return cat;
         }
-
-        public string cadastrarCategoria(Categoria cat)
+        public static string cadastrarCategoria(Categoria cat)
         {
-            string sql = "";
+            string sql = "", resp = "";
             int retorno = 0;
-            string resp = "";
 
             try
             {
                 conexao = Conecta.getConexao();
-                sql = "INSERT INTO Categoria (id_categoria, descricao) ";
-                sql += "VALUES (@id_categoria, @descricao)";
+                sql = @"INSERT INTO Categoria (id_categoria, descricao) 
+                        VALUES (@id_categoria, @descricao)";
 
                 cmd = conexao.CreateCommand();
                 cmd.CommandText = sql;
@@ -139,12 +135,10 @@ namespace DAL
             }
             return resp;
         }
-
-        public string excluirCategoria(string id)
+        public static string excluirCategoria(string id)
         {
-            string sql;
+            string sql, resp = "";
             int retorno;
-            string resp = "";
             try
             {
                 conexao = Conecta.getConexao();
@@ -169,8 +163,7 @@ namespace DAL
             }
             return resp;
         }
-
-        public string alterarCategoria(Categoria cat)
+        public static string alterarCategoria(Categoria cat)
         {
             string sql, resp = "";
             int retorno;
@@ -178,9 +171,9 @@ namespace DAL
             try
             {
                 conexao = Conecta.getConexao();
-                sql = "UPDATE Categoria ";
-                sql += "SET descricao = @descricao ";
-                sql += "WHERE (id_categoria = @id_categoria)";
+                sql = @"UPDATE Categoria 
+                        SET descricao = @descricao 
+                        WHERE(id_categoria = @id_categoria)";
 
                 cmd = conexao.CreateCommand();
                 cmd.CommandText = sql;
@@ -203,8 +196,7 @@ namespace DAL
             }
             return resp;
         }
-
-        public bool validarCategoria(string descricao)
+        public static bool validarCategoria(string descricao)
         {
             bool resp = false;
             string sql = "";
@@ -234,8 +226,7 @@ namespace DAL
             }
             return resp;
         }
-
-        public bool buscarCategoria(string id)
+        public static bool buscarCategoria(string id)
         {
             bool resp = false;
             string sql = "";
@@ -268,8 +259,7 @@ namespace DAL
             }
             return resp;
         }
-
-        public List<Categoria> obterCategoria()
+        public static List<Categoria> obterCategoria()
         {
             List<Categoria> lista = new List<Categoria>();
             string sql;
@@ -299,8 +289,7 @@ namespace DAL
             }
             return lista;
         }
-
-        public ArrayList getCategoria()
+        public static ArrayList getCategoria()
         {
             ArrayList lista = new ArrayList();
             string sql = "";

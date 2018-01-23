@@ -8,3 +8,13 @@ C:\Users\suporte 24\source\repos\ProjetoIntegrado\BLL\obj\Debug\BLL.csprojResolv
 C:\Users\suporte 24\source\repos\ProjetoIntegrado\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
 C:\Users\suporte 24\source\repos\ProjetoIntegrado\BLL\obj\Debug\BLL.dll
 C:\Users\suporte 24\source\repos\ProjetoIntegrado\BLL\obj\Debug\BLL.pdb
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\BLL\bin\Debug\BLL.dll
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\BLL\bin\Debug\BLL.pdb
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\BLL\bin\Debug\DAL.dll
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\BLL\bin\Debug\DTO.dll
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\BLL\bin\Debug\DAL.pdb
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\BLL\bin\Debug\DTO.pdb
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\BLL\obj\Debug\BLL.csprojResolveAssemblyReference.cache
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\BLL\obj\Debug\BLL.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\BLL\obj\Debug\BLL.dll
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\BLL\obj\Debug\BLL.pdb

@@ -1,10 +1,15 @@
-C:\Users\suporte 24\source\repos\ProjetoIntegrado\View\bin\Debug\View.dll
-C:\Users\suporte 24\source\repos\ProjetoIntegrado\View\bin\Debug\View.pdb
-C:\Users\suporte 24\source\repos\ProjetoIntegrado\View\bin\Debug\BLL.dll
-C:\Users\suporte 24\source\repos\ProjetoIntegrado\View\bin\Debug\DTO.dll
-C:\Users\suporte 24\source\repos\ProjetoIntegrado\View\bin\Debug\BLL.pdb
-C:\Users\suporte 24\source\repos\ProjetoIntegrado\View\bin\Debug\DTO.pdb
-C:\Users\suporte 24\source\repos\ProjetoIntegrado\View\obj\Debug\View.csprojResolveAssemblyReference.cache
-C:\Users\suporte 24\source\repos\ProjetoIntegrado\View\obj\Debug\View.csproj.CoreCompileInputs.cache
-C:\Users\suporte 24\source\repos\ProjetoIntegrado\View\obj\Debug\View.dll
-C:\Users\suporte 24\source\repos\ProjetoIntegrado\View\obj\Debug\View.pdb
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\bin\Debug\View.exe.config
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\bin\Debug\View.exe
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\bin\Debug\View.pdb
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\bin\Debug\BLL.dll
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\bin\Debug\DTO.dll
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\bin\Debug\BLL.pdb
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\bin\Debug\DTO.pdb
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\obj\Debug\View.csprojResolveAssemblyReference.cache
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\obj\Debug\View.FrmPrincipal.resources
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\obj\Debug\View.FrmSoubre.resources
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\obj\Debug\View.Properties.Resources.resources
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\obj\Debug\View.csproj.GenerateResource.Cache
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\obj\Debug\View.csproj.CoreCompileInputs.cache
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\obj\Debug\View.exe
+C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\View\obj\Debug\View.pdb
