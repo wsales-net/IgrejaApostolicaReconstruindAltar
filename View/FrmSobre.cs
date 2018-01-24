@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace View
 {
-    partial class FrmSoubre : Form
+    partial class FrmSobre : Form
     {
-        public FrmSoubre()
+        public FrmSobre()
         {
             InitializeComponent();
             this.Text = String.Format("Sobre {0}", AssemblyTitle);

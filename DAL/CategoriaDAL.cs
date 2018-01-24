@@ -1,31 +1,22 @@
 ﻿using DTO;
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.OleDb;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace DAL
 {
-    class CategoriaDAL
+    class CategoriaDAL : Conecta
     {
-        private static OleDbConnection conexao;
-        private static OleDbCommand cmd;
-        private static OleDbDataReader dr;
-
-        public static DataTable FindAll()
+        public static DataTable FindAllCategoria()
         {
             DataTable dt = new DataTable();
-            string sql = "";
+            string sql;
             try
             {
-                conexao = Conecta.getConexao();
                 sql = "SELECT id_categoria as Código, descricao as Descrição FROM Categoria ORDER BY id_categoria";
-                cmd = conexao.CreateCommand();
+                cmd = GetConexao().CreateCommand();
                 cmd.CommandText = sql;
 
                 OleDbDataAdapter da = new OleDbDataAdapter(cmd);
@@ -34,25 +25,25 @@ namespace DAL
                 dt.EndLoadData();
 
                 cmd.Dispose();
-                conexao.Close();
+                GetConexao().Close();
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;
         }
-        public static Categoria FindById(string id)
+
+        public static Categoria FindCategoriaById(string id)
         {
-            string sql = "";
+            string sql;
             Categoria cat = new Categoria();
             try
             {
-                conexao = Conecta.getConexao();
                 sql = "SELECT * FROM Categoria WHERE id_categoria = @id_categoria";
 
-                cmd = conexao.CreateCommand();
+                cmd = GetConexao().CreateCommand();
                 cmd.Parameters.AddWithValue("@id_categoria", id);
                 cmd.CommandText = sql;
                 dr = cmd.ExecuteReader();
@@ -64,25 +55,26 @@ namespace DAL
                 }
                 dr.Dispose();
                 cmd.Dispose();
-                conexao.Dispose();
+                GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindById()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return cat;
         }
-        public static Categoria FindByDesc(string desc)
+
+        public static Categoria FindCategoriaByDesc(string desc)
         {
-            string sql = "";
+            string sql;
             Categoria cat = new Categoria();
             try
             {
-                conexao = Conecta.getConexao();
+
                 sql = "SELECT descricao FROM Categoria WHERE descricao = @descricao";
 
-                cmd = conexao.CreateCommand();
+                cmd = GetConexao().CreateCommand();
                 cmd.Parameters.AddWithValue("@descricao", desc);
                 cmd.CommandText = sql;
                 dr = cmd.ExecuteReader();
@@ -94,27 +86,28 @@ namespace DAL
                 }
                 dr.Dispose();
                 cmd.Dispose();
-                conexao.Dispose();
+                GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindById()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return cat;
         }
-        public static string cadastrarCategoria(Categoria cat)
+
+        public static string AddCategoria(Categoria cat)
         {
-            string sql = "", resp = "";
-            int retorno = 0;
+            string sql, resp;
+            int retorno;
 
             try
             {
-                conexao = Conecta.getConexao();
+
                 sql = @"INSERT INTO Categoria (id_categoria, descricao) 
                         VALUES (@id_categoria, @descricao)";
 
-                cmd = conexao.CreateCommand();
+                cmd = GetConexao().CreateCommand();
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@id_categoria", cat.Id);
                 cmd.Parameters.AddWithValue("@descricao", cat.Descricao);
@@ -127,7 +120,7 @@ namespace DAL
                     resp = "Cadastro não realizado.";
 
                 cmd.Dispose();
-                conexao.Dispose();
+                GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
@@ -135,16 +128,17 @@ namespace DAL
             }
             return resp;
         }
-        public static string excluirCategoria(string id)
+
+        public static string DelCategoria(string id)
         {
-            string sql, resp = "";
+            string sql, resp;
             int retorno;
             try
             {
-                conexao = Conecta.getConexao();
+
                 sql = "DELETE FROM Categoria WHERE id_categoria = @id_categoria";
 
-                cmd = conexao.CreateCommand();
+                cmd = GetConexao().CreateCommand();
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@id_categoria", id);
 
@@ -155,7 +149,7 @@ namespace DAL
                     resp = "Exclusão não realizada.";
 
                 cmd.Dispose();
-                conexao.Dispose();
+                GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
@@ -163,19 +157,20 @@ namespace DAL
             }
             return resp;
         }
-        public static string alterarCategoria(Categoria cat)
+
+        public static string UpdateCategoria(Categoria cat)
         {
-            string sql, resp = "";
+            string sql, resp;
             int retorno;
 
             try
             {
-                conexao = Conecta.getConexao();
+
                 sql = @"UPDATE Categoria 
                         SET descricao = @descricao 
                         WHERE(id_categoria = @id_categoria)";
 
-                cmd = conexao.CreateCommand();
+                cmd = GetConexao().CreateCommand();
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@descricao", cat.Descricao);
                 cmd.Parameters.AddWithValue("@id_categoria", cat.Id);
@@ -188,7 +183,7 @@ namespace DAL
                     resp = "Categoria não atualizada.";
 
                 cmd.Dispose();
-                conexao.Dispose();
+                GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
@@ -196,16 +191,18 @@ namespace DAL
             }
             return resp;
         }
-        public static bool validarCategoria(string descricao)
+
+        public static bool ValidarCategoria(string descricao)
         {
             bool resp = false;
-            string sql = "";
+            string sql;
+
             try
             {
-                conexao = Conecta.getConexao();
+
                 sql = "SELECT * FROM Categoria WHERE descricao = @descricao";
 
-                cmd = conexao.CreateCommand();
+                cmd = GetConexao().CreateCommand();
                 cmd.Parameters.AddWithValue("@descricao", descricao);
                 cmd.CommandText = sql;
                 dr = cmd.ExecuteReader();
@@ -217,28 +214,30 @@ namespace DAL
 
                 dr.Dispose();
                 cmd.Dispose();
-                conexao.Dispose();
+                GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - buscarCategoria()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resp;
         }
-        public static bool buscarCategoria(string id)
+
+        public static bool GetCategoria(string id)
         {
             bool resp = false;
-            string sql = "";
+            string sql;
+
             try
             {
-                conexao = Conecta.getConexao();
-                sql = "SELECT Produto.id_produto, Produto.nome, Categoria.id_categoria, Categoria.descricao ";
-                sql += "FROM (Categoria INNER JOIN ";
-                sql += "Produto ON Categoria.id_categoria = Produto.id_categoria) ";
-                sql += "WHERE (Categoria.id_categoria = @id_categoria)";
 
-                cmd = conexao.CreateCommand();
+                sql = @"SELECT Produto.id_produto, Produto.nome, Categoria.id_categoria, Categoria.descricao
+                        FROM (Categoria INNER JOIN
+                        Produto ON Categoria.id_categoria = Produto.id_categoria)
+                        WHERE (Categoria.id_categoria = @id_categoria)";
+
+                cmd = GetConexao().CreateCommand();
                 cmd.Parameters.AddWithValue("@id_categoria", id);
                 cmd.CommandText = sql;
                 dr = cmd.ExecuteReader();
@@ -250,24 +249,25 @@ namespace DAL
 
                 dr.Dispose();
                 cmd.Dispose();
-                conexao.Dispose();
+                GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - buscarCategoriaP()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resp;
         }
-        public static List<Categoria> obterCategoria()
+
+        public static List<Categoria> GetCategorias()
         {
             List<Categoria> lista = new List<Categoria>();
             string sql;
             try
             {
                 sql = "SELECT * FROM Categoria ORDER BY Descricao";
-                conexao = Conecta.getConexao();
-                cmd = conexao.CreateCommand();
+
+                cmd = GetConexao().CreateCommand();
                 cmd.CommandText = sql;
                 dr = cmd.ExecuteReader();
                 while (dr.Read())
@@ -280,25 +280,25 @@ namespace DAL
 
                 dr.Dispose();
                 cmd.Dispose();
-                conexao.Dispose();
+                GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - obterCategoria()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return lista;
         }
-        public static ArrayList getCategoria()
+
+        public static ArrayList GetCategoria()
         {
             ArrayList lista = new ArrayList();
-            string sql = "";
+            string sql;
             try
             {
                 sql = "SELECT * FROM categoria";
-                conexao = Conecta.getConexao();
 
-                cmd = conexao.CreateCommand();
+                cmd = GetConexao().CreateCommand();
                 cmd.CommandText = sql;
                 OleDbDataReader dr = cmd.ExecuteReader();
 
@@ -313,12 +313,12 @@ namespace DAL
 
                 dr.Dispose();
                 cmd.Dispose();
-                conexao.Dispose();
+                GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return lista;
         }

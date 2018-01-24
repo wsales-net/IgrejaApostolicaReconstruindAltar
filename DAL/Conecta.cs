@@ -6,7 +6,10 @@ namespace DAL
 {
     public class Conecta
     {
-        public static OleDbConnection getConexao()
+        protected static OleDbCommand cmd;
+        protected static OleDbDataReader dr;
+
+        public static OleDbConnection GetConexao()
         {
             OleDbConnection conexao;
             try
@@ -22,6 +25,6 @@ namespace DAL
                     MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return null;
             }
-        }
+        }        
     }
 }

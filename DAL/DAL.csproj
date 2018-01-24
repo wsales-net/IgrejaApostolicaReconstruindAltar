@@ -42,8 +42,25 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CategoriaDAL.cs" />
+    <Compile Include="CidadeDAL.cs" />
     <Compile Include="Conecta.cs" />
+    <Compile Include="ContaPagarDAL.cs" />
+    <Compile Include="ContaReceberDAL.cs" />
+    <Compile Include="DizimoDAL.cs" />
+    <Compile Include="EnderecoDAL.cs" />
+    <Compile Include="EstadoDAL.cs" />
+    <Compile Include="EventoDAL.cs" />
+    <Compile Include="FuncaoDAL.cs" />
+    <Compile Include="ItemVendaDAL.cs" />
+    <Compile Include="MembroDAL.cs" />
+    <Compile Include="OfertaDAL.cs" />
+    <Compile Include="ProdutoDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PublicoDAL.cs" />
+    <Compile Include="FormaPagamentoDAL.cs" />
+    <Compile Include="TipoContaPagarDAL.cs" />
+    <Compile Include="UsuarioDAL.cs" />
+    <Compile Include="VendaDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DTO\DTO.csproj">

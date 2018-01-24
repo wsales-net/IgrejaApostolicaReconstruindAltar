@@ -56,7 +56,7 @@
     <Compile Include="Produto.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publico.cs" />
-    <Compile Include="StatusPagamento.cs" />
+    <Compile Include="FormaPagamento.cs" />
     <Compile Include="TipoContaPagar.cs" />
     <Compile Include="Usuario.cs" />
     <Compile Include="Venda.cs" />
