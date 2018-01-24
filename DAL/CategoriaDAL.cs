@@ -29,7 +29,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
                     "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;
@@ -59,7 +59,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
                     "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return cat;
@@ -90,7 +90,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
                     "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return cat;
@@ -218,7 +218,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
                     "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resp;
@@ -253,7 +253,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
                     "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resp;
@@ -284,7 +284,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
                     "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return lista;
@@ -317,7 +317,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContato o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
                     "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return lista;
