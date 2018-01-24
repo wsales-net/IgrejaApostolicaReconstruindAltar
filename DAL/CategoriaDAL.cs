@@ -29,8 +29,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
-                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "FindAllCategoria()");
             }
             return dt;
         }
@@ -59,8 +58,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
-                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "FindCategoriaById()");
             }
             return cat;
         }
@@ -90,15 +88,14 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
-                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "FindCategoriaByDesc()");
             }
             return cat;
         }
 
         public static string AddCategoria(Categoria cat)
         {
-            string sql, resp;
+            string sql, resp = "";
             int retorno;
 
             try
@@ -124,14 +121,14 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "AddCategoria()");
             }
             return resp;
         }
 
         public static string DelCategoria(string id)
         {
-            string sql, resp;
+            string sql, resp = "";
             int retorno;
             try
             {
@@ -153,19 +150,18 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "DelCategoria()");
             }
             return resp;
         }
 
         public static string UpdateCategoria(Categoria cat)
         {
-            string sql, resp;
+            string sql, resp = "";
             int retorno;
 
             try
             {
-
                 sql = @"UPDATE Categoria 
                         SET descricao = @descricao 
                         WHERE(id_categoria = @id_categoria)";
@@ -187,7 +183,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "UpdateCategoria()");
             }
             return resp;
         }
@@ -218,8 +214,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
-                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "ValidarCategoria()");
             }
             return resp;
         }
@@ -231,7 +226,6 @@ namespace DAL
 
             try
             {
-
                 sql = @"SELECT Produto.id_produto, Produto.nome, Categoria.id_categoria, Categoria.descricao
                         FROM (Categoria INNER JOIN
                         Produto ON Categoria.id_categoria = Produto.id_categoria)
@@ -253,8 +247,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
-                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "GetCategoria()");
             }
             return resp;
         }
@@ -284,8 +277,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
-                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "GetCategorias()");                    
             }
             return lista;
         }
@@ -317,8 +309,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
-                    "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "GetCategoria()");                    
             }
             return lista;
         }

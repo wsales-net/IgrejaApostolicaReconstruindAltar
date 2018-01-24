@@ -11,12 +11,11 @@ namespace DAL
     {
         public static string AddMembro(Membro membro)
         {
-            string sql, resp;
+            string sql, resp = "";
             int retorno = 0;
 
             try
             {
-                
                 sql = @"INSERT INTO Pessoa (id_funcao, id_endereco, nome, sexo, dataNascimento, telefone,
                         celular, numero, complemento, email, rg, cpf, dataRegistro, status, foto)
                         VALUES (@id_funcao, @id_endereco, @nome, @sexo, @dataNascimento, @telefone,
@@ -52,7 +51,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "AddMembro()");
             }
 
             return resp;
@@ -70,6 +69,7 @@ namespace DAL
                 cmd = GetConexao().CreateCommand();
                 cmd.CommandText = sql;
                 dr = cmd.ExecuteReader();
+
                 while (dr.Read())
                 {
                     Membro pessoa = new Membro();
@@ -84,8 +84,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "GetMembros()");
             }
             return lista;
         }
@@ -117,7 +116,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "GetMembro()");
             }
             return membro;
         }
@@ -147,7 +146,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "ValidarMembro()");
             }
             return resp;
         }
@@ -190,8 +189,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindById()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "FindMembroById()");
             }
             return membro;
         }
@@ -221,8 +219,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAllProdutos()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "FindMembro()");
             }
             return dt;
         }
@@ -272,7 +269,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "UpdateMembro()");
             }
             return resp;
         }

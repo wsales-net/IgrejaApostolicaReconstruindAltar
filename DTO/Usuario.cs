@@ -8,5 +8,6 @@
         public string Senha { get; set; }
 
         public Usuario() { }
+
     }
 }

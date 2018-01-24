@@ -1,6 +1,5 @@
 ﻿using DTO;
 using System.Data.OleDb;
-using System.Windows.Forms;
 
 namespace DAL
 {
@@ -8,7 +7,8 @@ namespace DAL
     {
         public static bool ValidaLogin(Usuario usuario)
         {
-            bool resp;
+            bool resp = false;
+
             try
             {
                 string sql = "SELECT * FROM usuario WHERE usuario = @usuario and senha = @senha";
@@ -24,29 +24,36 @@ namespace DAL
                     resp = true;
                 else
                     resp = false;
+
                 dr.Dispose();
                 cmd.Dispose();
                 GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                resp = false;
+                MensagemErroBanco(ex, "ValidaLogin()");
             }
             return resp;
         }
 
-        public static bool validaUsuario(Usuario usuario)
+        public static bool ValidaUsuario(Usuario usuario)
         {
             string sql;
-            bool resp;
+            bool resp = false;
+
             try
             {
                 sql = @"SELECT U.usuario, P.nome
                         FROM Usuario U
                         INNER JOIN Pessoa P ON U.id_usuario = P.id_pessoa
                         WHERE  P.nome = @nome";
+                /**
+	                SELECT ID_Usuario, Nome_Usuario, Login_Usuario, Senha_Usuario, Data_Inclusao, Ativo_Usuario
+	                FROM Usuario U WITH(NOLOCK)
+	                WHERE Login_Usuario COLLATE Latin1_General_CS_AS = @Login_Usuario COLLATE Latin1_General_CS_AS
+	                AND Senha_Usuario COLLATE Latin1_General_CS_AS = @Senha_Usuario COLLATE Latin1_General_CS_AS 
+	                AND Ativo_Usuario = 1
+                 */
 
                 //SqlConnection
                 cmd = GetConexao().CreateCommand();
@@ -65,17 +72,16 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                resp = false;
+                MensagemErroBanco(ex, "ValidaUsuario()");
             }
             return resp;
         }
 
-        public static string gravarUsuario(Usuario usuario)
+        public static string AddUsuario(Usuario usuario)
         {
             string sql;
-            string resp;
+            string resp = "";
+
             try
             {
                 
@@ -89,28 +95,29 @@ namespace DAL
                 cmd.Parameters.AddWithValue("@senha", usuario.Senha);
 
                 int retorno = cmd.ExecuteNonQuery();
+
                 if (retorno > 0)
                     resp = "Cadastrado com sucesso.";
                 else
                     resp = "Cadastro não realizado.";
+
                 cmd.Dispose();
                 GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "AddUsuario");
             }
             return resp;
         }
 
-        public static string alterarSenha(Usuario usuario)
+        public static string UpdateSenha(Usuario usuario)
         {
-            string sql, resp;
+            string sql, resp = "";
             int retorno;
 
             try
             {
-                
                 sql = @"UPDATE Usuario
                         SET senha = @senha
                         WHERE (usuario = @usuario)";
@@ -132,7 +139,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "UpdateSenha");
             }
             return resp;
         }

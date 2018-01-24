@@ -9,7 +9,7 @@ namespace DAL
     {
         public static string AddConta(ContaPagar cp)
         {
-            string sql, resp;
+            string sql, resp = "";
             int retorno;
 
             try
@@ -38,7 +38,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "AddConta()");
             }
             return resp;
         }
@@ -74,8 +74,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindById()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "FindContaById()");
             }
             return cp;
         }
@@ -107,7 +106,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "VerificarContas()");
             }
             return resp;
         }
