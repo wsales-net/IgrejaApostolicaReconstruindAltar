@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DTO
+﻿namespace DTO
 {
     public class Endereco
     {
@@ -12,7 +6,7 @@ namespace DTO
         public string Cep { get; set; }
         public string Logradouro { get; set; }
         public string Bairro { get; set; }
-        public Cidade Id_Cidade { get; set; }
+        public Cidade Cidade { get; set; }
 
         public Endereco() { }
     }

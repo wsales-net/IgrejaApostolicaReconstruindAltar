@@ -6,7 +6,10 @@ namespace DAL
 {
     public class Conecta
     {
-        public static OleDbConnection getConexao()
+        protected static OleDbCommand cmd;
+        protected static OleDbDataReader dr;
+
+        public static OleDbConnection GetConexao()
         {
             OleDbConnection conexao;
             try
@@ -23,5 +26,13 @@ namespace DAL
                 return null;
             }
         }
+
+        public static void MensagemErroBanco(Exception ex, string metodo)
+        {
+            MessageBox.Show("Falha ao consultar - " + metodo + "\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
+                "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+
+
     }
 }

@@ -22,3 +22,11 @@ C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\DAL\obj\Debug
 C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
 C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\DAL\obj\Debug\DAL.dll
 C:\Users\Lenovo\Documents\Github\IgrejaApostolicaReconstruindAltar\DAL\obj\Debug\DAL.pdb
+C:\Users\WELL\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DAL\obj\Debug\DAL.csprojResolveAssemblyReference.cache
+C:\Users\WELL\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DAL\obj\Debug\DAL.csproj.CoreCompileInputs.cache
+C:\Users\WELL\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DAL\obj\Debug\DAL.dll
+C:\Users\WELL\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DAL\obj\Debug\DAL.pdb
+C:\Users\WELL\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DAL\bin\Debug\DAL.dll
+C:\Users\WELL\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DAL\bin\Debug\DAL.pdb
+C:\Users\WELL\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DAL\bin\Debug\DTO.dll
+C:\Users\WELL\Documents\GitHub\IgrejaApostolicaReconstruindAltar\DAL\bin\Debug\DTO.pdb

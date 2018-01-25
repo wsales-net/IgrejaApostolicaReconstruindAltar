@@ -1,6 +1,6 @@
 ﻿namespace View
 {
-    partial class FrmSoubre
+    partial class FrmSobre
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -27,7 +27,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSoubre));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmSobre));
             this.tableLayoutPanel = new System.Windows.Forms.TableLayoutPanel();
             this.logoPictureBox = new System.Windows.Forms.PictureBox();
             this.labelProductName = new System.Windows.Forms.Label();
