@@ -11,16 +11,16 @@ using System.Windows.Forms;
 
 namespace DAL
 {
-    class CategoriaDAL
+    public class CategoriaDAL
     {
         private static OleDbConnection conexao;
         private static OleDbCommand cmd;
         private static OleDbDataReader dr;
 
-        public static DataTable FindAll()
+        public static DataTable FindAllCategoria()
         {
             DataTable dt = new DataTable();
-            string sql = "";
+            string sql;
             try
             {
                 conexao = Conecta.getConexao();
@@ -38,14 +38,15 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar, verifique o metodo FindAllCategoria(). \nContate o Administrador - (11) 2636-5659.\n\n" +
+                    ex.ToString(), "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return dt;
         }
-        public static Categoria FindById(string id)
+
+        public static Categoria FindCategoriaById(string id)
         {
-            string sql = "";
+            string sql;
             Categoria cat = new Categoria();
             try
             {
@@ -59,7 +60,7 @@ namespace DAL
 
                 if (dr.Read()) //Indicado que achou um registro
                 {
-                    cat.Id = int.Parse(dr["id_categoria"].ToString());
+                    cat.Id = Convert.ToInt32(dr["id_categoria"].ToString());
                     cat.Descricao = dr["descricao"].ToString();
                 }
                 dr.Dispose();
@@ -68,14 +69,15 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindById()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar, verifique o metodo FindCategoriaById(). \nContate o Administrador - (11) 2636-5659.\n\n" +
+                    ex.ToString(), "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return cat;
         }
-        public static Categoria FindByDesc(string desc)
+
+        public static Categoria FindCategoriaByDesc(string desc)
         {
-            string sql = "";
+            string sql;
             Categoria cat = new Categoria();
             try
             {
@@ -89,7 +91,7 @@ namespace DAL
 
                 if (dr.Read()) //Indicado que achou um registro
                 {
-                    cat.Id = int.Parse(dr["id_categoria"].ToString());
+                    cat.Id = Convert.ToInt32(dr["id_categoria"].ToString());
                     cat.Descricao = dr["descricao"].ToString();
                 }
                 dr.Dispose();
@@ -98,14 +100,15 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindById()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar, verifique o metodo FindCategoriaByDesc(). \nContate o Administrador - (11) 2636-5659.\n\n" +
+                    ex.ToString(), "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return cat;
         }
-        public static string cadastrarCategoria(Categoria cat)
+
+        public static string addCategoria(Categoria cat)
         {
-            string sql = "", resp = "";
+            string sql, resp = "";
             int retorno = 0;
 
             try
@@ -131,11 +134,13 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MessageBox.Show("Falha ao consultar, verifique o metodo addCategoria(). \nContate o Administrador - (11) 2636-5659.\n\n" +
+                    ex.ToString(), "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            return resp;
+            return resp = "";
         }
-        public static string excluirCategoria(string id)
+
+        public static string delCategoria(string id)
         {
             string sql, resp = "";
             int retorno;
@@ -159,11 +164,13 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MessageBox.Show("Falha ao consultar, verifique o metodo delCategoria(). \nContate o Administrador - (11) 2636-5659.\n\n" +
+                    ex.ToString(), "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resp;
         }
-        public static string alterarCategoria(Categoria cat)
+
+        public static string updateCategoria(Categoria cat)
         {
             string sql, resp = "";
             int retorno;
@@ -192,14 +199,16 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MessageBox.Show("Falha ao consultar, verifique o metodo updateCategoria(). \nContate o Administrador - (11) 2636-5659.\n\n" +
+                    ex.ToString(), "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resp;
         }
+
         public static bool validarCategoria(string descricao)
         {
             bool resp = false;
-            string sql = "";
+            string sql;
             try
             {
                 conexao = Conecta.getConexao();
@@ -221,22 +230,23 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - buscarCategoria()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar, verifique o metodo validarCategoria(). \nContate o Administrador - (11) 2636-5659.\n\n" +
+                    ex.ToString(), "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resp;
         }
-        public static bool buscarCategoria(string id)
+
+        public static bool GetCategoriaById(string id)
         {
             bool resp = false;
-            string sql = "";
+            string sql;
             try
             {
                 conexao = Conecta.getConexao();
-                sql = "SELECT Produto.id_produto, Produto.nome, Categoria.id_categoria, Categoria.descricao ";
-                sql += "FROM (Categoria INNER JOIN ";
-                sql += "Produto ON Categoria.id_categoria = Produto.id_categoria) ";
-                sql += "WHERE (Categoria.id_categoria = @id_categoria)";
+                sql = @"SELECT Produto.id_produto, Produto.nome, Categoria.id_categoria, Categoria.descricao 
+                			FROM (Categoria INNER JOIN
+                			Produto ON Categoria.id_categoria = Produto.id_categoria)
+                			WHERE (Categoria.id_categoria = @id_categoria)";
 
                 cmd = conexao.CreateCommand();
                 cmd.Parameters.AddWithValue("@id_categoria", id);
@@ -254,12 +264,13 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - buscarCategoriaP()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar, verifique o metodo GetCategoriaById(). \nContate o Administrador - (11) 2636-5659.\n\n" +
+                    ex.ToString(), "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return resp;
         }
-        public static List<Categoria> obterCategoria()
+
+        public static List<Categoria> GetCategorias()
         {
             List<Categoria> lista = new List<Categoria>();
             string sql;
@@ -273,7 +284,7 @@ namespace DAL
                 while (dr.Read())
                 {
                     Categoria cat = new Categoria();
-                    cat.Id = int.Parse(dr["id_categoria"].ToString());
+                    cat.Id = Convert.ToInt32(dr["id_categoria"].ToString());
                     cat.Descricao = dr["descricao"].ToString();
                     lista.Add(cat);
                 }
@@ -284,15 +295,16 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - obterCategoria()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar, verifique o metodo GetCategorias(). \nContate o Administrador - (11) 2636-5659.\n\n" +
+                    ex.ToString(), "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return lista;
         }
-        public static ArrayList getCategoria()
+
+        public static ArrayList GetCategoria()
         {
             ArrayList lista = new ArrayList();
-            string sql = "";
+            string sql;
             try
             {
                 sql = "SELECT * FROM categoria";
@@ -305,7 +317,7 @@ namespace DAL
                 while (dr.Read())
                 {
                     Categoria cat = new Categoria();
-                    cat.Id = int.Parse(dr["id_categoria"].ToString());
+                    cat.Id = Convert.ToInt32(dr["id_categoria"].ToString());
                     cat.Descricao = dr["descricao"].ToString();
 
                     lista.Add(cat);
@@ -317,8 +329,8 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Falha ao consultar, verifique o metodo GetCategoria(). \nContate o Administrador - (11) 2636-5659.\n\n" +
+                    ex.ToString(), "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return lista;
         }
