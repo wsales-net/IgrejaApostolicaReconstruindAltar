@@ -24,10 +24,10 @@ namespace DAL
                 cmd = GetConexao().CreateCommand();
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@id_funcao", membro.IdFuncao);
-                cmd.Parameters.AddWithValue("@id_endereco", membro.IdEndereco);
+                //cmd.Parameters.AddWithValue("@id_endereco", membro.IdEndereco);
                 cmd.Parameters.AddWithValue("@nome", membro.Nome);
                 cmd.Parameters.AddWithValue("@sexo", membro.Sexo);
-                cmd.Parameters.AddWithValue("@dataNascimento", membro.DataNasc);
+                cmd.Parameters.AddWithValue("@dataNascimento", membro.DataNascimento);
                 cmd.Parameters.AddWithValue("@telefone", membro.Telefone);
                 cmd.Parameters.AddWithValue("@celular", membro.Celular);
                 cmd.Parameters.AddWithValue("@numero", membro.Numero);
@@ -169,11 +169,11 @@ namespace DAL
                 {
                     membro.Id = Convert.ToInt32(dr["id_pessoa"].ToString());
                     membro.IdFuncao = Convert.ToInt32(dr["id_funcao"].ToString());
-                    membro.IdEndereco = Convert.ToInt32((dr["id_endereco"].ToString()));
+                    //membro.IdEndereco = Convert.ToInt32((dr["id_endereco"].ToString()));
                     membro.Nome = dr["nome"].ToString();
                     membro.Sexo = dr["sexo"].ToString();
                     membro.Email = dr["email"].ToString();
-                    membro.DataNasc = Convert.ToDateTime(dr["dataNascimento"].ToString());
+                    membro.DataNascimento = Convert.ToDateTime(dr["dataNascimento"].ToString());
                     membro.Telefone = dr["telefone"].ToString();
                     membro.Celular = dr["celular"].ToString();
                     membro.Numero = Convert.ToInt32(dr["numero"].ToString());
@@ -241,11 +241,11 @@ namespace DAL
 
                 cmd = GetConexao().CreateCommand();
                 cmd.CommandText = sql;
-                cmd.Parameters.AddWithValue("@id_endereco", membro.IdEndereco);
+                //cmd.Parameters.AddWithValue("@id_endereco", membro.IdEndereco);
                 cmd.Parameters.AddWithValue("@id_funcao", membro.IdFuncao);
                 cmd.Parameters.AddWithValue("@nome", membro.Nome);
                 cmd.Parameters.AddWithValue("@sexo", membro.Sexo);
-                cmd.Parameters.AddWithValue("@dataNascimento", membro.DataNasc);
+                cmd.Parameters.AddWithValue("@dataNascimento", membro.DataNascimento);
                 cmd.Parameters.AddWithValue("@telefone", membro.Telefone);
                 cmd.Parameters.AddWithValue("@celular", membro.Celular);
                 cmd.Parameters.AddWithValue("@numero", membro.Numero);

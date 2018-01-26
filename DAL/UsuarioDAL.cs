@@ -5,7 +5,7 @@ namespace DAL
 {
     public class UsuarioDAL : Conecta
     {
-        public static bool ValidaLogin(Usuario usuario)
+        public static bool CheckLogin(Usuario usuario)
         {
             bool resp = false;
 

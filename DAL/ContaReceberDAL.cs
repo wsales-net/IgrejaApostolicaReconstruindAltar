@@ -8,7 +8,7 @@ namespace DAL
 {
     public class ContaReceberDAL : Conecta
     {
-        public string addConta(ContaReceber cr)
+        public static string addConta(ContaReceber cr)
         {
             string sql, resp;
             int retorno;
@@ -49,7 +49,7 @@ namespace DAL
             return resp;
         }
 
-        public DataTable FindAllContaReceber()
+        public static DataTable FindAllContaReceber()
         {
             DataTable dt = new DataTable();
             string sql;
