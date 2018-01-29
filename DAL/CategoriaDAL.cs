@@ -48,7 +48,7 @@ namespace DAL
 
                 if (dr.Read()) //Indicado que achou um registro
                 {
-                    cat.Id = int.Parse(dr["id_categoria"].ToString());
+                    cat.Id = Convert.ToInt32(dr["id_categoria"].ToString());
                     cat.Descricao = dr["descricao"].ToString();
                 }
                 dr.Dispose();
@@ -78,7 +78,7 @@ namespace DAL
 
                 if (dr.Read()) //Indicado que achou um registro
                 {
-                    cat.Id = int.Parse(dr["id_categoria"].ToString());
+                    cat.Id = Convert.ToInt32(dr["id_categoria"].ToString());
                     cat.Descricao = dr["descricao"].ToString();
                 }
                 dr.Dispose();
@@ -122,7 +122,7 @@ namespace DAL
             {
                 MensagemErroBanco(ex, "AddCategoria()");
             }
-            return resp;
+            return resp = "";
         }
 
         public static string DelCategoria(string id)
@@ -265,7 +265,7 @@ namespace DAL
                 while (dr.Read())
                 {
                     Categoria cat = new Categoria();
-                    cat.Id = int.Parse(dr["id_categoria"].ToString());
+                    cat.Id = Convert.ToInt32(dr["id_categoria"].ToString());
                     cat.Descricao = dr["descricao"].ToString();
                     lista.Add(cat);
                 }
@@ -296,7 +296,7 @@ namespace DAL
                 while (dr.Read())
                 {
                     Categoria cat = new Categoria();
-                    cat.Id = int.Parse(dr["id_categoria"].ToString());
+                    cat.Id = Convert.ToInt32(dr["id_categoria"].ToString());
                     cat.Descricao = dr["descricao"].ToString();
 
                     lista.Add(cat);
