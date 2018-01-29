@@ -354,5 +354,10 @@ namespace View.Add
         {
             this.Close();
         }
+
+        private void btnCep_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -32,7 +32,5 @@ namespace DAL
             MessageBox.Show("Falha ao consultar - " + metodo + "\nContate o Administrador - (11) 2636-5659\n\n" + ex.ToString(),
                 "Erro no Banco de Dados", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
-
-
     }
 }

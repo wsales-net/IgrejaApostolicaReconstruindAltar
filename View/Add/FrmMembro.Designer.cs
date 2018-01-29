@@ -180,6 +180,7 @@
             this.groupBox2.Controls.Add(this.txtBairro);
             this.groupBox2.Controls.Add(this.txtCep);
             this.groupBox2.Controls.Add(this.txtLougradouro);
+            this.groupBox2.Enabled = false;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBox2.Location = new System.Drawing.Point(143, 265);
@@ -272,6 +273,7 @@
             // 
             this.cbxCidade.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbxCidade.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxCidade.Enabled = false;
             this.cbxCidade.Font = new System.Drawing.Font("Verdana", 9F);
             this.cbxCidade.FormattingEnabled = true;
             this.cbxCidade.Location = new System.Drawing.Point(272, 49);
@@ -313,6 +315,7 @@
             this.btnCep.Size = new System.Drawing.Size(30, 23);
             this.btnCep.TabIndex = 11;
             this.btnCep.UseVisualStyleBackColor = true;
+            this.btnCep.Click += new System.EventHandler(this.btnCep_Click);
             // 
             // txtComplemento
             // 
@@ -342,6 +345,7 @@
             this.txtBairro.Location = new System.Drawing.Point(261, 157);
             this.txtBairro.Margin = new System.Windows.Forms.Padding(2);
             this.txtBairro.Name = "txtBairro";
+            this.txtBairro.ReadOnly = true;
             this.txtBairro.Size = new System.Drawing.Size(168, 22);
             this.txtBairro.TabIndex = 17;
             // 
@@ -357,10 +361,12 @@
             // 
             // txtLougradouro
             // 
+            this.txtLougradouro.Enabled = false;
             this.txtLougradouro.Font = new System.Drawing.Font("Verdana", 9F);
             this.txtLougradouro.Location = new System.Drawing.Point(15, 104);
             this.txtLougradouro.Margin = new System.Windows.Forms.Padding(2);
             this.txtLougradouro.Name = "txtLougradouro";
+            this.txtLougradouro.ReadOnly = true;
             this.txtLougradouro.Size = new System.Drawing.Size(414, 22);
             this.txtLougradouro.TabIndex = 14;
             // 
