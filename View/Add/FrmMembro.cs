@@ -2,15 +2,9 @@
 using DTO;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace View.Add
@@ -116,7 +110,7 @@ namespace View.Add
             LimitarCampos();
 
             //Quando a tela é carregada 
-            //CarregarDados(pes);
+            CarregarDados(pessoa, listaF, pessoa.Endereco);
         }
 
         private void LimitarCampos()
@@ -129,11 +123,15 @@ namespace View.Add
         }
 
         //Carrega dados do banco passado por parametro
-        private void CarregarDados(Membro membro, Funcao funcao, Endereco endereco)
+        private void CarregarDados(Membro membro, ArrayList listFuncao, Endereco endereco)
         {
             if (membro != null)
             {
-                cbxFuncao.Text = funcao.Id + " - " + funcao.Descricao;
+                for (int i = 0; i < listFuncao.Count; i++)
+                {
+                    Funcao funcao = (Funcao)listFuncao[i];
+                    cbxFuncao.Items.Add(funcao.Id + " - " + funcao.Descricao);
+                }
                 cbxEstado.SelectedValue = endereco.Cidade.Estado.Id;
                 cbxCidade.SelectedValue = endereco.Cidade.Id;
                 txtNome.Text = membro.Nome;
@@ -174,42 +172,55 @@ namespace View.Add
 
         private void BtnSalvar_Click(object sender, EventArgs e)
         {
-            //MessageBox.Show("");
-
-            //if (ValidarCampos())
-            //{
-            //    if (this.Text == "Alteração de Membros" && btnSalvar.Text == "Salvar")
-            //    {
-            //        lblMensagem.Text = MembroBLL.UpdateMembro(montarMembro());
-            //        if (!lblMensagem.Text.Equals("Membro não atualizado."))
-            //            lblMensagem.ForeColor = Color.DarkGreen;
-            //        else
-            //            lblMensagem.ForeColor = Color.Red;
-            //    }
-            //    else if (new MembroDAO().validarMembro(txtNome.Text))
-            //    {
-            //        lblMensagem.ForeColor = Color.Orange;
-            //        lblMensagem.Text = "Membro já possui cadastro no sistema.";
-            //    }
-            //    else
-            //    {
-            //        ptbMembro.Image.Save(Application.StartupPath.ToString() + "\\fotos\\" + txtNome.Text + ".png",
-            //            System.Drawing.Imaging.ImageFormat.Png);
-            //        lblMensagem.ForeColor = Color.DarkGreen;
-            //        Membro membro = montarMembro();
-            //        lblMensagem.Text = new MembroDAO().gravarMembro(membro);
-            //        if (lblMensagem.Text.Equals("Cadastro não realizado."))
-            //            lblMensagem.ForeColor = Color.Red;
-            //        else
-            //            limparCampos();
-            //    }
-            //}
+            if (ValidarCampos())
+            {
+                lblMensagem.ForeColor = Color.DarkGreen;
+                if (this.Text == "Alteração de Membros" && btnSalvar.Text == "Salvar")
+                {
+                    lblMensagem.Text = MembroBLL.UpdateMembro(MontarMembro());
+                    if (lblMensagem.Text.Equals("Membro não atualizado."))
+                        lblMensagem.ForeColor = Color.Red;
+                }
+                else if (new MembroBLL().ValidarMembro(txtNome.Text))
+                {
+                    lblMensagem.ForeColor = Color.Orange;
+                    lblMensagem.Text = "Membro já possui cadastro no sistema.";
+                }
+                else
+                {
+                    ptbMembro.Image.Save(Application.StartupPath.ToString() + "\\fotos\\" + txtNome.Text + ".png", System.Drawing.Imaging.ImageFormat.Png);
+                    lblMensagem.Text = new MembroBLL().AddMembro(MontarMembro());
+                    if (lblMensagem.Text.Equals("Cadastro não realizado."))
+                        lblMensagem.ForeColor = Color.Red;
+                    else
+                        LimparCampos();
+                }
+            }
         }
 
-        private Membro montarMembro()
+        private void LimparCampos()
+        {
+            txtNome.Text = "";
+            txtCpf.Text = "";
+            txtRG.Text = "";
+            txtEmail.Text = "";
+            txtNascimento.Text = "";
+            txtTelefone.Text = "";
+            txtCelular.Text = "9";
+            cbxFuncao.Text = "Escolha a Função";
+            txtCep.Text = "";
+            txtLougradouro.Text = "";
+            txtNumero.Value = 0;
+            txtComplemento.Text = "";
+            txtBairro.Text = "";
+            ptbMembro.ImageLocation = Application.StartupPath.ToString() + "../../../Resources/user.png";
+            ptbMembro.Show();
+            txtNome.Focus();
+        }
+
+        private Membro MontarMembro()
         {
             Membro membro = new Membro();
-
             string[] s = cbxFuncao.Text.Split('-');
 
             #region Salvar Foto
@@ -249,18 +260,17 @@ namespace View.Add
             else
                 membro.Email = txtEmail.Text;
 
-            if (string.IsNullOrEmpty(txtCpf.Text))
+            if (!Regex.Match(txtCpf.Text.Replace(",", "."), @"^\d{3}\.\d{3}\.\d{3}-\d{2}$").Success)
                 membro.Cpf = null;
             else
                 membro.Cpf = txtCpf.Text;
 
-            //PAREI AQUI
-            if (!Regex.Match(txtRG.Text, @"^\(?\d{2}\)?[\s-]?[\s9]?\d{4}-?\d{4}$").Success)
+            if (!Regex.Match(txtRG.Text.Replace(",", "."), @"[0-9]{1}?\.[0-9]{3}?\.[0-9]{3}?").Success)
                 membro.Rg = null;
             else
                 membro.Rg = txtRG.Text;
 
-            membro.DataRegistro = DateTime.Parse(DateTime.Now.ToShortDateString());
+            membro.DataRegistro = DateTime.Parse(DateTime.Now.ToString());
             if (cbxStatus.SelectedIndex == 0)
                 membro.Status = true;
             else
@@ -305,7 +315,7 @@ namespace View.Add
             {
                 if (!Regex.Match(txtEmail.Text, @"^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$").Success)
                 {
-                    lblMensagem.Text = "Digite um e-mail inválido.";
+                    lblMensagem.Text = "Digite um e-mail correto.";
                     lblMensagem.ForeColor = Color.Red;
                     txtCelular.Focus();
                     return false;

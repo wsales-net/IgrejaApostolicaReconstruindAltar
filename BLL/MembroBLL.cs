@@ -7,7 +7,7 @@ namespace BLL
     {
         public static string UpdateMembro(Membro membro)
         {
-            return MembroDAL.UpdateMembro(membro);
+            return MembroDAL.UpdateMembro(membro); ;
         }
     }
 }
