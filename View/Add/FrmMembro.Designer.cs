@@ -85,7 +85,7 @@
             this.label15.Location = new System.Drawing.Point(11, 190);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(61, 14);
+            this.label15.Size = new System.Drawing.Size(73, 18);
             this.label15.TabIndex = 56;
             this.label15.Text = "Status:*";
             // 
@@ -127,7 +127,7 @@
             this.cbxStatus.Location = new System.Drawing.Point(13, 208);
             this.cbxStatus.Margin = new System.Windows.Forms.Padding(2);
             this.cbxStatus.Name = "cbxStatus";
-            this.cbxStatus.Size = new System.Drawing.Size(126, 22);
+            this.cbxStatus.Size = new System.Drawing.Size(126, 26);
             this.cbxStatus.TabIndex = 51;
             this.cbxStatus.Text = "Escolha o Status";
             // 
@@ -149,7 +149,7 @@
             this.lblMensagem.Location = new System.Drawing.Point(148, 9);
             this.lblMensagem.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMensagem.Name = "lblMensagem";
-            this.lblMensagem.Size = new System.Drawing.Size(0, 14);
+            this.lblMensagem.Size = new System.Drawing.Size(0, 18);
             this.lblMensagem.TabIndex = 53;
             // 
             // ptbMembro
@@ -199,7 +199,7 @@
             this.lblBairro.Location = new System.Drawing.Point(260, 140);
             this.lblBairro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblBairro.Name = "lblBairro";
-            this.lblBairro.Size = new System.Drawing.Size(57, 14);
+            this.lblBairro.Size = new System.Drawing.Size(69, 18);
             this.lblBairro.TabIndex = 53;
             this.lblBairro.Text = "Bairro:*";
             // 
@@ -210,7 +210,7 @@
             this.label17.Location = new System.Drawing.Point(82, 141);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(99, 14);
+            this.label17.Size = new System.Drawing.Size(121, 18);
             this.label17.TabIndex = 52;
             this.label17.Text = "Complemento:";
             // 
@@ -221,7 +221,7 @@
             this.label18.Location = new System.Drawing.Point(14, 141);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(69, 14);
+            this.label18.Size = new System.Drawing.Size(85, 18);
             this.label18.TabIndex = 51;
             this.label18.Text = "Número:*";
             // 
@@ -232,7 +232,7 @@
             this.lblLogradouro.Location = new System.Drawing.Point(14, 87);
             this.lblLogradouro.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLogradouro.Name = "lblLogradouro";
-            this.lblLogradouro.Size = new System.Drawing.Size(93, 14);
+            this.lblLogradouro.Size = new System.Drawing.Size(111, 18);
             this.lblLogradouro.TabIndex = 50;
             this.lblLogradouro.Text = "Logradouro:*";
             // 
@@ -243,7 +243,7 @@
             this.lblCidade.Location = new System.Drawing.Point(270, 32);
             this.lblCidade.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCidade.Name = "lblCidade";
-            this.lblCidade.Size = new System.Drawing.Size(64, 14);
+            this.lblCidade.Size = new System.Drawing.Size(75, 18);
             this.lblCidade.TabIndex = 49;
             this.lblCidade.Text = "Cidade:*";
             // 
@@ -254,7 +254,7 @@
             this.lblEstado.Location = new System.Drawing.Point(133, 32);
             this.lblEstado.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(64, 14);
+            this.lblEstado.Size = new System.Drawing.Size(76, 18);
             this.lblEstado.TabIndex = 48;
             this.lblEstado.Text = "Estado:*";
             // 
@@ -265,7 +265,7 @@
             this.lblCep.Location = new System.Drawing.Point(14, 32);
             this.lblCep.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCep.Name = "lblCep";
-            this.lblCep.Size = new System.Drawing.Size(45, 14);
+            this.lblCep.Size = new System.Drawing.Size(54, 18);
             this.lblCep.TabIndex = 47;
             this.lblCep.Text = "CEP:*";
             // 
@@ -279,7 +279,7 @@
             this.cbxCidade.Location = new System.Drawing.Point(272, 49);
             this.cbxCidade.Margin = new System.Windows.Forms.Padding(2);
             this.cbxCidade.Name = "cbxCidade";
-            this.cbxCidade.Size = new System.Drawing.Size(157, 22);
+            this.cbxCidade.Size = new System.Drawing.Size(157, 26);
             this.cbxCidade.TabIndex = 13;
             // 
             // txtNumero
@@ -298,7 +298,7 @@
             0,
             0});
             this.txtNumero.Name = "txtNumero";
-            this.txtNumero.Size = new System.Drawing.Size(60, 22);
+            this.txtNumero.Size = new System.Drawing.Size(60, 26);
             this.txtNumero.TabIndex = 15;
             this.txtNumero.Value = new decimal(new int[] {
             1,
@@ -323,7 +323,7 @@
             this.txtComplemento.Location = new System.Drawing.Point(82, 157);
             this.txtComplemento.Margin = new System.Windows.Forms.Padding(2);
             this.txtComplemento.Name = "txtComplemento";
-            this.txtComplemento.Size = new System.Drawing.Size(175, 22);
+            this.txtComplemento.Size = new System.Drawing.Size(175, 26);
             this.txtComplemento.TabIndex = 16;
             // 
             // cbxEstado
@@ -335,7 +335,7 @@
             this.cbxEstado.Location = new System.Drawing.Point(135, 49);
             this.cbxEstado.Margin = new System.Windows.Forms.Padding(2);
             this.cbxEstado.Name = "cbxEstado";
-            this.cbxEstado.Size = new System.Drawing.Size(134, 22);
+            this.cbxEstado.Size = new System.Drawing.Size(134, 26);
             this.cbxEstado.TabIndex = 12;
             this.cbxEstado.Text = "Escolha o Estado";
             // 
@@ -346,7 +346,7 @@
             this.txtBairro.Margin = new System.Windows.Forms.Padding(2);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.ReadOnly = true;
-            this.txtBairro.Size = new System.Drawing.Size(168, 22);
+            this.txtBairro.Size = new System.Drawing.Size(168, 26);
             this.txtBairro.TabIndex = 17;
             // 
             // txtCep
@@ -356,7 +356,7 @@
             this.txtCep.Margin = new System.Windows.Forms.Padding(2);
             this.txtCep.Mask = "00000-000";
             this.txtCep.Name = "txtCep";
-            this.txtCep.Size = new System.Drawing.Size(82, 22);
+            this.txtCep.Size = new System.Drawing.Size(82, 26);
             this.txtCep.TabIndex = 10;
             // 
             // txtLougradouro
@@ -367,7 +367,7 @@
             this.txtLougradouro.Margin = new System.Windows.Forms.Padding(2);
             this.txtLougradouro.Name = "txtLougradouro";
             this.txtLougradouro.ReadOnly = true;
-            this.txtLougradouro.Size = new System.Drawing.Size(414, 22);
+            this.txtLougradouro.Size = new System.Drawing.Size(414, 26);
             this.txtLougradouro.TabIndex = 14;
             // 
             // groupBox1
@@ -409,7 +409,7 @@
             this.txtNascimento.Location = new System.Drawing.Point(314, 141);
             this.txtNascimento.Margin = new System.Windows.Forms.Padding(2);
             this.txtNascimento.Name = "txtNascimento";
-            this.txtNascimento.Size = new System.Drawing.Size(119, 22);
+            this.txtNascimento.Size = new System.Drawing.Size(119, 26);
             this.txtNascimento.TabIndex = 69;
             this.txtNascimento.Value = new System.DateTime(1900, 1, 1, 15, 53, 0, 0);
             // 
@@ -420,7 +420,7 @@
             this.rbtFeminino.Location = new System.Drawing.Point(340, 91);
             this.rbtFeminino.Margin = new System.Windows.Forms.Padding(2);
             this.rbtFeminino.Name = "rbtFeminino";
-            this.rbtFeminino.Size = new System.Drawing.Size(81, 18);
+            this.rbtFeminino.Size = new System.Drawing.Size(96, 22);
             this.rbtFeminino.TabIndex = 68;
             this.rbtFeminino.TabStop = true;
             this.rbtFeminino.Text = "Feminino";
@@ -433,7 +433,7 @@
             this.rbtMasculino.Location = new System.Drawing.Point(234, 93);
             this.rbtMasculino.Margin = new System.Windows.Forms.Padding(2);
             this.rbtMasculino.Name = "rbtMasculino";
-            this.rbtMasculino.Size = new System.Drawing.Size(86, 18);
+            this.rbtMasculino.Size = new System.Drawing.Size(101, 22);
             this.rbtMasculino.TabIndex = 67;
             this.rbtMasculino.TabStop = true;
             this.rbtMasculino.Text = "Masculino";
@@ -446,7 +446,7 @@
             this.lblSexo.Location = new System.Drawing.Point(232, 73);
             this.lblSexo.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSexo.Name = "lblSexo";
-            this.lblSexo.Size = new System.Drawing.Size(51, 14);
+            this.lblSexo.Size = new System.Drawing.Size(63, 18);
             this.lblSexo.TabIndex = 66;
             this.lblSexo.Text = "Sexo:*";
             // 
@@ -457,7 +457,7 @@
             this.lblFuncao.Location = new System.Drawing.Point(258, 176);
             this.lblFuncao.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblFuncao.Name = "lblFuncao";
-            this.lblFuncao.Size = new System.Drawing.Size(65, 14);
+            this.lblFuncao.Size = new System.Drawing.Size(79, 18);
             this.lblFuncao.TabIndex = 65;
             this.lblFuncao.Text = "Função:*";
             // 
@@ -468,7 +468,7 @@
             this.lblCel.Location = new System.Drawing.Point(122, 176);
             this.lblCel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblCel.Name = "lblCel";
-            this.lblCel.Size = new System.Drawing.Size(44, 14);
+            this.lblCel.Size = new System.Drawing.Size(53, 18);
             this.lblCel.TabIndex = 64;
             this.lblCel.Text = "Cel.:*";
             // 
@@ -479,7 +479,7 @@
             this.lblTel.Location = new System.Drawing.Point(11, 176);
             this.lblTel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTel.Name = "lblTel";
-            this.lblTel.Size = new System.Drawing.Size(41, 14);
+            this.lblTel.Size = new System.Drawing.Size(49, 18);
             this.lblTel.TabIndex = 63;
             this.lblTel.Text = "Tel.:*";
             // 
@@ -490,7 +490,7 @@
             this.lblNascimento.Location = new System.Drawing.Point(312, 124);
             this.lblNascimento.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNascimento.Name = "lblNascimento";
-            this.lblNascimento.Size = new System.Drawing.Size(54, 14);
+            this.lblNascimento.Size = new System.Drawing.Size(66, 18);
             this.lblNascimento.TabIndex = 62;
             this.lblNascimento.Text = "Nasc.:*";
             // 
@@ -501,7 +501,7 @@
             this.label4.Location = new System.Drawing.Point(10, 124);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(50, 14);
+            this.label4.Size = new System.Drawing.Size(61, 18);
             this.label4.TabIndex = 58;
             this.label4.Text = "E-mail:";
             // 
@@ -512,7 +512,7 @@
             this.label2.Location = new System.Drawing.Point(121, 73);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 14);
+            this.label2.Size = new System.Drawing.Size(37, 18);
             this.label2.TabIndex = 59;
             this.label2.Text = "RG:";
             // 
@@ -523,7 +523,7 @@
             this.label1.Location = new System.Drawing.Point(11, 73);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 14);
+            this.label1.Size = new System.Drawing.Size(44, 18);
             this.label1.TabIndex = 61;
             this.label1.Text = "CPF:";
             // 
@@ -534,7 +534,7 @@
             this.lblNome.Location = new System.Drawing.Point(11, 23);
             this.lblNome.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblNome.Name = "lblNome";
-            this.lblNome.Size = new System.Drawing.Size(56, 14);
+            this.lblNome.Size = new System.Drawing.Size(70, 18);
             this.lblNome.TabIndex = 60;
             this.lblNome.Text = "Nome:*";
             // 
@@ -547,7 +547,7 @@
             this.cbxFuncao.Location = new System.Drawing.Point(256, 193);
             this.cbxFuncao.Margin = new System.Windows.Forms.Padding(2);
             this.cbxFuncao.Name = "cbxFuncao";
-            this.cbxFuncao.Size = new System.Drawing.Size(176, 22);
+            this.cbxFuncao.Size = new System.Drawing.Size(176, 26);
             this.cbxFuncao.TabIndex = 57;
             this.cbxFuncao.Text = "Escolha a função";
             // 
@@ -558,7 +558,7 @@
             this.txtCelular.Margin = new System.Windows.Forms.Padding(2);
             this.txtCelular.Mask = "(11) 00000-0000";
             this.txtCelular.Name = "txtCelular";
-            this.txtCelular.Size = new System.Drawing.Size(129, 22);
+            this.txtCelular.Size = new System.Drawing.Size(129, 26);
             this.txtCelular.TabIndex = 56;
             this.txtCelular.Text = "9";
             // 
@@ -569,7 +569,7 @@
             this.txtTelefone.Margin = new System.Windows.Forms.Padding(2);
             this.txtTelefone.Mask = "(11) 0000-0000";
             this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(107, 22);
+            this.txtTelefone.Size = new System.Drawing.Size(107, 26);
             this.txtTelefone.TabIndex = 55;
             // 
             // txtRG
@@ -579,7 +579,7 @@
             this.txtRG.Margin = new System.Windows.Forms.Padding(2);
             this.txtRG.Mask = "00.000.000-0";
             this.txtRG.Name = "txtRG";
-            this.txtRG.Size = new System.Drawing.Size(94, 22);
+            this.txtRG.Size = new System.Drawing.Size(94, 26);
             this.txtRG.TabIndex = 52;
             // 
             // txtCpf
@@ -589,7 +589,7 @@
             this.txtCpf.Margin = new System.Windows.Forms.Padding(2);
             this.txtCpf.Mask = "000.000.000-00";
             this.txtCpf.Name = "txtCpf";
-            this.txtCpf.Size = new System.Drawing.Size(107, 22);
+            this.txtCpf.Size = new System.Drawing.Size(107, 26);
             this.txtCpf.TabIndex = 51;
             // 
             // txtEmail
@@ -598,7 +598,7 @@
             this.txtEmail.Location = new System.Drawing.Point(14, 141);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(297, 22);
+            this.txtEmail.Size = new System.Drawing.Size(297, 26);
             this.txtEmail.TabIndex = 53;
             this.txtEmail.Tag = "";
             // 
@@ -608,12 +608,12 @@
             this.txtNome.Location = new System.Drawing.Point(13, 40);
             this.txtNome.Margin = new System.Windows.Forms.Padding(2);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(420, 22);
+            this.txtNome.Size = new System.Drawing.Size(420, 26);
             this.txtNome.TabIndex = 50;
             // 
             // FrmMembro
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 14F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 18F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 513);
             this.Controls.Add(this.label15);
