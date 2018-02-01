@@ -109,8 +109,10 @@ namespace View.Add
 
             LimitarCampos();
 
+            String[] elemento = (String[]) cbxFuncao.Items[pessoa.IdFuncao];
+
             //Quando a tela é carregada 
-            CarregarDados(pessoa, listaF, pessoa.Endereco);
+            CarregarDados(pessoa, elemento[pessoa.IdFuncao], pessoa.Endereco);
         }
 
         private void LimitarCampos()
@@ -123,15 +125,11 @@ namespace View.Add
         }
 
         //Carrega dados do banco passado por parametro
-        private void CarregarDados(Membro membro, ArrayList listFuncao, Endereco endereco)
+        private void CarregarDados(Membro membro, string listFuncao, Endereco endereco)
         {
             if (membro != null)
             {
-                for (int i = 0; i < listFuncao.Count; i++)
-                {
-                    Funcao funcao = (Funcao)listFuncao[i];
-                    cbxFuncao.Items.Add(funcao.Id + " - " + funcao.Descricao);
-                }
+                //membro.IdFuncao;
                 cbxEstado.SelectedValue = endereco.Cidade.Estado.Id;
                 cbxCidade.SelectedValue = endereco.Cidade.Id;
                 txtNome.Text = membro.Nome;
