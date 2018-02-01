@@ -40,7 +40,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "GetEndereco()");
             }
             return end;
         }
@@ -78,7 +78,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "GetEnderecoById()");
             }
             return end;
         }
@@ -99,8 +99,6 @@ namespace DAL
 
                 if (dr.HasRows)
                     resp = true;
-                else
-                    resp = false;
 
                 dr.Dispose();
                 cmd.Dispose();
@@ -108,14 +106,14 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "ValidarEndereco()");
             }
             return resp;
         }
 
         public static string AddEndereco(Endereco end)
         {
-            string resp, sql;
+            string sql, resp = "";
             int retorno;
             try
             {
@@ -140,7 +138,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "AddEndereco()");
             }
             return resp;
         }

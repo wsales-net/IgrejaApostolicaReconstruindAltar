@@ -130,6 +130,7 @@
             this.cbxStatus.Size = new System.Drawing.Size(126, 22);
             this.cbxStatus.TabIndex = 51;
             this.cbxStatus.Text = "Escolha o Status";
+            this.cbxStatus.SelectedIndexChanged += new System.EventHandler(this.CbxStatus_SelectedIndexChanged);
             // 
             // btnFoto
             // 
@@ -141,6 +142,7 @@
             this.btnFoto.TabIndex = 50;
             this.btnFoto.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnFoto.UseVisualStyleBackColor = true;
+            this.btnFoto.Click += new System.EventHandler(this.BtnFoto_Click);
             // 
             // lblMensagem
             // 
@@ -180,7 +182,6 @@
             this.groupBox2.Controls.Add(this.txtBairro);
             this.groupBox2.Controls.Add(this.txtCep);
             this.groupBox2.Controls.Add(this.txtLougradouro);
-            this.groupBox2.Enabled = false;
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F);
             this.groupBox2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.groupBox2.Location = new System.Drawing.Point(143, 265);
@@ -315,7 +316,7 @@
             this.btnCep.Size = new System.Drawing.Size(30, 23);
             this.btnCep.TabIndex = 11;
             this.btnCep.UseVisualStyleBackColor = true;
-            this.btnCep.Click += new System.EventHandler(this.btnCep_Click);
+            this.btnCep.Click += new System.EventHandler(this.BtnCep_Click);
             // 
             // txtComplemento
             // 
@@ -330,6 +331,7 @@
             // 
             this.cbxEstado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
             this.cbxEstado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+            this.cbxEstado.Enabled = false;
             this.cbxEstado.Font = new System.Drawing.Font("Verdana", 9F);
             this.cbxEstado.FormattingEnabled = true;
             this.cbxEstado.Location = new System.Drawing.Point(135, 49);
@@ -338,6 +340,7 @@
             this.cbxEstado.Size = new System.Drawing.Size(134, 22);
             this.cbxEstado.TabIndex = 12;
             this.cbxEstado.Text = "Escolha o Estado";
+            this.cbxEstado.SelectedIndexChanged += new System.EventHandler(this.CbxEstado_SelectedIndexChanged);
             // 
             // txtBairro
             // 
@@ -591,6 +594,7 @@
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(107, 22);
             this.txtCpf.TabIndex = 51;
+            this.txtCpf.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCpf_KeyPress);
             // 
             // txtEmail
             // 

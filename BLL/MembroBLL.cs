@@ -11,14 +11,18 @@ namespace BLL
             return MembroDAL.UpdateMembro(membro); ;
         }
 
-        public bool ValidarMembro(string text)
+        public static bool ValidarMembro(string nome)
         {
-            throw new NotImplementedException();
+            return MembroDAL.ValidarMembro(nome);
         }
 
-        public string AddMembro(Membro membro)
+        public static string AddMembro(Membro membro)
         {
-            throw new NotImplementedException();
+            string resp = MembroDAL.AddMembro(membro);
+            if (string.IsNullOrEmpty(resp))
+                resp = "Não foi possível cadastrar membro.";
+
+            return resp;
         }
     }
 }
