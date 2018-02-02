@@ -10,7 +10,7 @@ namespace DAL
     {
         public static string AddEvento(Evento ev)
         {
-            string resp, sql;
+            string sql, resp = "";
             int retorno = 0;
             try
             {
@@ -40,7 +40,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "AddEvento()");
             }
             return resp;
         }
@@ -68,8 +68,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAllProdutos()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "FindEventos()");
             }
             return dt;
         }
@@ -78,6 +77,7 @@ namespace DAL
         {
             string sql;
             Evento ev = new Evento();
+
             try
             {
                 sql = "SELECT * FROM Evento WHERE id_evento = @id_evento";
@@ -106,8 +106,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindById()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "FindEventoById()");
             }
             return ev;
         }
@@ -119,7 +118,6 @@ namespace DAL
 
             try
             {
-
                 sql = @"UPDATE Evento
                         SET  id_publico = @id_publico, id_endereco = @id_endereco,
                         nome = @nome, data = @data, hora = @hora, descricao = @descricao,
@@ -149,12 +147,12 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "UpdateEvento()");
             }
             return resp;
         }
 
-        public static bool validarEvento(string nome)
+        public static bool ValidarEvento(string nome)
         {
             bool resp = false;
             string sql;
@@ -170,8 +168,6 @@ namespace DAL
 
                 if (dr.HasRows)
                     resp = true;
-                else
-                    resp = false;
 
                 dr.Dispose();
                 cmd.Dispose();
@@ -179,7 +175,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "ValidarEvento()");
             }
             return resp;
         }

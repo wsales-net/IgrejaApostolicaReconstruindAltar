@@ -15,7 +15,7 @@ namespace DAL
             try
             {
                 conexao = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;
-                Data Source=C:/Users/WELL/Documents/GitHub/IgrejaApostolicaReconstruindAltar/banco_homologacao.accdb");/*/bin/Debug*/
+                Data Source=C:/Users/WELL/Documents/GitHub/IgrejaApostolicaReconstruindAltar/View/banco_homologacao.accdb");/*/bin/Debug*/
                 conexao.Open();
                 return conexao;
             }

@@ -31,7 +31,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "GetTotal()");
             }
             return retorno;
         }
@@ -65,7 +65,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "AddVenda()");
             }
             return resp;
         }
@@ -102,7 +102,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "UpdateVenda()");
             }
             return resp;
         }

@@ -123,7 +123,7 @@ namespace DAL
             {
                 MensagemErroBanco(ex, "AddCategoria()");
             }
-            return resp = "";
+            return resp;
         }
 
         public static string DelCategoria(string id)
@@ -205,8 +205,6 @@ namespace DAL
 
                 if (dr.HasRows) //Indicado que achou um registro
                     resp = true;
-                else
-                    resp = false;
 
                 dr.Dispose();
                 cmd.Dispose();
@@ -238,8 +236,6 @@ namespace DAL
 
                 if (dr.HasRows) //Indicado que achou um registro
                     resp = true;
-                else
-                    resp = false;
 
                 dr.Dispose();
                 cmd.Dispose();

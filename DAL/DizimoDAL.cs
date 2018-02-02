@@ -7,7 +7,7 @@ namespace DAL
     {
         public static string AddDizimo(Dizimo dizimo)
         {
-            string resp, sql;
+            string sql, resp = "";
             int retorno;
             try
             {
@@ -33,7 +33,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "AddDizimo()");
             }
             return resp;
         }

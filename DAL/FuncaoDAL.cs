@@ -16,7 +16,6 @@ namespace DAL
 
             try
             {
-                
                 sql = "SELECT * FROM Funcao WHERE id_funcao = @id";
 
                 cmd = GetConexao().CreateCommand();
@@ -37,7 +36,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "GetFuncao()");
             }
             return funcao;
 
@@ -45,12 +44,11 @@ namespace DAL
 
         public static string AddFuncao(Funcao funcao)
         {
-            string sql, resp;
+            string sql, resp = "";
             int retorno;
 
             try
             {
-                
                 sql = @"INSERT INTO Funcao (id_funcao, descricao)
                         VALUES (@id_funcao, @descricao)";
 
@@ -71,7 +69,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "AddFuncao()");
             }
             return resp;
         }        
@@ -104,8 +102,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "GetFuncao()");
             }
             return lista;
         }
@@ -114,9 +111,9 @@ namespace DAL
         {
             bool resp = false;
             string sql;
+
             try
             {
-                
                 sql = "SELECT * FROM Funcao WHERE descricao = @descricao";
 
                 cmd = GetConexao().CreateCommand();
@@ -126,8 +123,6 @@ namespace DAL
 
                 if (dr.HasRows) //Indicado que achou um registro
                     resp = true;
-                else
-                    resp = false;
 
                 dr.Dispose();
                 cmd.Dispose();
@@ -135,8 +130,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - buscarCategoria()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "ValidarFuncao()");
             }
             return resp;
         }
@@ -160,8 +154,6 @@ namespace DAL
 
                 if (dr.HasRows) //Indicado que achou um registro
                     resp = true;
-                else
-                    resp = false;
 
                 dr.Dispose();
                 cmd.Dispose();
@@ -169,20 +161,18 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - buscarCategoriaP()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "GetFuncao()");
             }
             return resp;
         }
 
         public static string UpdateFuncao(Funcao funcao)
         {
-            string sql, resp;
+            string sql, resp = "";
             int retorno;
 
             try
             {
-                
                 sql = @"UPDATE Funcao 
                         SET descricao = @descricao 
                         WHERE (id_funcao = @id_funcao)";
@@ -204,19 +194,18 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "UpdateFuncao()");
             }
             return resp;
         }
 
         public static string DelFuncao(string id)
         {
-            string sql, resp;
+            string sql, resp = "";
             int retorno;
 
             try
             {
-                
                 sql = "DELETE FROM Funcao WHERE id_funcao = @id_funcao";
 
                 cmd = GetConexao().CreateCommand();
@@ -234,7 +223,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "DelFuncao()");
             }
             return resp;
         }
@@ -243,9 +232,9 @@ namespace DAL
         {
             DataTable dt = new DataTable();
             string sql;
+
             try
             {
-                
                 sql = @"SELECT id_funcao as Código, descricao as Descrição
                         FROM Funcao 
                         ORDER BY id_funcao";
@@ -263,8 +252,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "FindAllFuncao()");
             }
             return dt;
         }
@@ -276,7 +264,6 @@ namespace DAL
 
             try
             {
-                
                 sql = "SELECT * FROM Funcao WHERE id_funcao = @id_funcao";
 
                 cmd = GetConexao().CreateCommand();
@@ -295,8 +282,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindById()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "FindFuncaoById()");
             }
             return funcao;
         }
@@ -308,7 +294,6 @@ namespace DAL
 
             try
             {
-                
                 sql = "SELECT MAX(id_funcao) AS registros FROM Funcao";
 
                 cmd = GetConexao().CreateCommand();
@@ -327,10 +312,9 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "GetRegistros()");
             }
             return id;
         }
-
     }
 }

@@ -11,6 +11,7 @@ namespace DAL
         {
             Endereco end = new Endereco();
             string sql;
+
             try
             {
                 sql = @"SELECT Endereco.id_endereco, Cidade.id_estado, Endereco.id_cidade, Estado.sigla, Endereco.cep, Endereco.lougradouro, Endereco.bairro
@@ -34,13 +35,14 @@ namespace DAL
                     end.Logradouro = dr["lougradouro"].ToString();
                     end.Bairro = dr["bairro"].ToString();
                 }
+
                 dr.Dispose();
                 cmd.Dispose();
                 GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "GetEndereco()");
             }
             return end;
         }
@@ -78,12 +80,11 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "GetEnderecoById()");
             }
             return end;
         }
 
-        //Verifica se cep esta cadastrado no banco
         public static bool ValidarEndereco(string cep)
         {
             bool resp = false;
@@ -99,8 +100,6 @@ namespace DAL
 
                 if (dr.HasRows)
                     resp = true;
-                else
-                    resp = false;
 
                 dr.Dispose();
                 cmd.Dispose();
@@ -108,14 +107,14 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "ValidarEndereco()");
             }
             return resp;
         }
 
         public static string AddEndereco(Endereco end)
         {
-            string resp, sql;
+            string sql, resp = "";
             int retorno;
             try
             {
@@ -135,12 +134,13 @@ namespace DAL
                     resp = "Cadastrado com sucesso.";
                 else
                     resp = "Endereço não cadastrado.";
+
                 cmd.Dispose();
                 GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "AddEndereco()");
             }
             return resp;
         }

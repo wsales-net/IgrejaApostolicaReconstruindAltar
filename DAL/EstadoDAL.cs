@@ -32,8 +32,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "GetEstado()");
             }
             return uf;
         }
@@ -42,11 +41,10 @@ namespace DAL
         {
             Estado uf = new Estado();
             string sql;
+
             try
             {
                 sql = "SELECT * FROM ESTADO WHERE sigla = @sigla";
-
-                //SqlConnection
                 cmd = GetConexao().CreateCommand();
                 cmd.Parameters.AddWithValue("@sigla", sigla);
                 cmd.CommandText = sql;
@@ -57,14 +55,14 @@ namespace DAL
                     uf.Id = Convert.ToInt32(dr["id_estado"].ToString());
                     uf.Sigla = dr["sigla"].ToString();
                 }
+
                 dr.Dispose();
                 cmd.Dispose();
                 GetConexao().Dispose();
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "GetEstado()");
             }
             return uf;
         }

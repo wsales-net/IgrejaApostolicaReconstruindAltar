@@ -34,17 +34,16 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - obterCategoria()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "GetTipoContaPagar()");
             }
             return lista;
         }
 
-        //Verifica as ontas que não foram pagas
         public static List<TipoContaPagar> GetTipoContasPagas()
         {
             List<TipoContaPagar> lista = new List<TipoContaPagar>();
             string sql;
+
             try
             {
                 sql = @"SELECT TipoContaPagar.* 
@@ -71,8 +70,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - obterCategoria()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "GetTipoContasPagas()");
             }
             return lista;
         }
@@ -103,8 +101,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindById()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "FindTipoContaById()");
             }
             return tipoconta;
         }
@@ -135,7 +132,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                System.Windows.Forms.MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "GetRegistros()");
             }
             return id;
         }
@@ -169,7 +166,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "UpdateTipoPagamento()");
             }
             return resp;
         }
@@ -202,7 +199,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "UpdateTipoPagamento()");
             }
             return resp;
         }
@@ -225,8 +222,6 @@ namespace DAL
 
                 if (dr.HasRows) //Indicado que achou um registro
                     resp = true;
-                else
-                    resp = false;
 
                 dr.Dispose();
                 cmd.Dispose();
@@ -234,17 +229,15 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - buscarCategoria()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "ValidarTipoPagamento()");
             }
             return resp;
         }
 
         public static string DelTipoPagamento(string id)
         {
-            string sql;
+            string sql, resp = "";
             int retorno;
-            string resp = "";
 
             try
             {
@@ -266,7 +259,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "DelTipoPagamento()");
             }
             return resp;
         }
@@ -291,8 +284,6 @@ namespace DAL
 
                 if (dr.HasRows) //Indicado que achou um registro
                     resp = true;
-                else
-                    resp = false;
 
                 dr.Dispose();
                 cmd.Dispose();
@@ -300,8 +291,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - buscarCategoriaP()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "GetTipoPagamento()");
             }
             return resp;
         }
@@ -331,8 +321,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar - FindAll()\n\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "FindAllTipoPagamento()");
             }
             return dt;
         }

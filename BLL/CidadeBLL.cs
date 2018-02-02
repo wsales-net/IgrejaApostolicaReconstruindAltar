@@ -1,18 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using DAL;
 using DTO;
 
 namespace BLL
 {
     public class CidadeBLL
     {
-        public static Cidade GetCidades(string v)
+        public static List<Cidade> GetCidades(string id)
         {
-            throw new NotImplementedException();
+            var cidades = CidadeDAL.GetCidades(id);
+            return cidades;
         }
 
-        public static object GetCidade(string v)
+        public static Cidade GetCidade(string id)
         {
-            throw new NotImplementedException();
+            var cidades = CidadeDAL.GetCidade(id);
+            return cidades;
         }
     }
 }

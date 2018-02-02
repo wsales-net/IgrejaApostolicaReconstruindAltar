@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DAL;
 using DTO;
 
 namespace BLL
@@ -11,17 +12,17 @@ namespace BLL
     {
         public static string AddEndereco(Endereco endereco)
         {
-            throw new NotImplementedException();
+            return EnderecoDAL.AddEndereco(endereco);
         }
 
-        public static bool ValidarEndereco(string text)
+        public static bool ValidarEndereco(string cep)
         {
-            throw new NotImplementedException();
+            return EnderecoDAL.ValidarEndereco(cep);
         }
 
-        public static Endereco GetEndereco(string text)
+        public static Endereco GetEndereco(string cep)
         {
-            throw new NotImplementedException();
+            return EnderecoDAL.GetEndereco(cep);
         }
     }
 }

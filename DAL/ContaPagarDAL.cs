@@ -97,8 +97,6 @@ namespace DAL
 
                 if (dr.HasRows)
                     resp = true;
-                else
-                    resp = false;
 
                 dr.Dispose();
                 cmd.Dispose();

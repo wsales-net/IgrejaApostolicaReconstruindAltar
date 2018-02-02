@@ -22,8 +22,6 @@ namespace DAL
 
                 if (dr.HasRows)
                     resp = true;
-                else
-                    resp = false;
 
                 dr.Dispose();
                 cmd.Dispose();
@@ -54,8 +52,7 @@ namespace DAL
 	                AND Senha_Usuario COLLATE Latin1_General_CS_AS = @Senha_Usuario COLLATE Latin1_General_CS_AS 
 	                AND Ativo_Usuario = 1
                  */
-
-                //SqlConnection
+                 
                 cmd = GetConexao().CreateCommand();
                 cmd.CommandText = sql;
                 cmd.Parameters.AddWithValue("@nome", usuario.Pessoa.Nome);
@@ -63,8 +60,6 @@ namespace DAL
 
                 if (dr.HasRows)
                     resp = true;
-                else
-                    resp = false;
 
                 dr.Dispose();
                 cmd.Dispose();
@@ -79,8 +74,7 @@ namespace DAL
 
         public static string AddUsuario(Usuario usuario)
         {
-            string sql;
-            string resp = "";
+            string sql, resp = "";
 
             try
             {
@@ -106,7 +100,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MensagemErroBanco(ex, "AddUsuario");
+                MensagemErroBanco(ex, "AddUsuario()");
             }
             return resp;
         }
@@ -139,7 +133,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MensagemErroBanco(ex, "UpdateSenha");
+                MensagemErroBanco(ex, "UpdateSenha()");
             }
             return resp;
         }

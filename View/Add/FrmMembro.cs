@@ -122,11 +122,7 @@ namespace View.Add
                     if (lblMensagem.Text.Equals("Membro não atualizado."))
                         lblMensagem.ForeColor = Color.Red;
                 }
-<<<<<<< HEAD
                 else if (MembroBLL.ValidarMembro(txtNome.Text))
-=======
-                else if (new MembroBLL().ValidarMembro(txtNome.Text)) //Parei aqui
->>>>>>> ca0358fe4b87c675b99ed2d9e49d08f4a79aafb8
                 {
                     lblMensagem.ForeColor = Color.Orange;
                     lblMensagem.Text = "Membro já possui cadastro no sistema.";

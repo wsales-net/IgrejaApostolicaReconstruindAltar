@@ -9,7 +9,7 @@ namespace DAL
     {
         public static string AddPublico(string funcao)
         {
-            string sql, resp;
+            string sql, resp = "";
             int retorno = 0;
 
             try
@@ -34,10 +34,9 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "AddPublico()");
             }
             return resp;
-
         }
 
         public static ArrayList GetPublico()
@@ -69,8 +68,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("Falha ao consultar\n" + ex.ToString(), "ERRO \nContato o Administrador!" +
-                    "(11) 2636-5659", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MensagemErroBanco(ex, "GetPublico()");
             }
             return lista;
         }
@@ -102,7 +100,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                MessageBox.Show("ERRO: " + ex.ToString());
+                MensagemErroBanco(ex, "GetPublico()");
             }
             return publico;
         }

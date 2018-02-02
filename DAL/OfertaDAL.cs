@@ -7,7 +7,7 @@ namespace DAL
     {
         public string AddOferta(Oferta of)
         {
-            string resp, sql;
+            string sql, resp = "";
             int retorno;
 
             try
@@ -32,7 +32,7 @@ namespace DAL
             }
             catch (OleDbException ex)
             {
-                resp = "ERRO: " + ex.ToString();
+                MensagemErroBanco(ex, "GetProdutos()");
             }
             return resp;
         }
