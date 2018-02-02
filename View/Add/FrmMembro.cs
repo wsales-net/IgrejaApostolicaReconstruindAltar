@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Drawing;
 using System.IO;
+using System.ServiceModel;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -34,59 +35,6 @@ namespace View.Add
             }
         }
 
-        private void AlterarCampos()
-        {
-            if (cbxStatus.SelectedIndex == 1)
-            {
-                txtNome.Enabled = false;
-                cbxFuncao.Enabled = false;
-                cbxEstado.Enabled = false;
-                cbxCidade.Enabled = false;
-                txtNome.Enabled = false;
-                txtEmail.Enabled = false;
-                txtNascimento.Enabled = false;
-                txtTelefone.Enabled = false;
-                txtCelular.Enabled = false;
-                txtNumero.Enabled = false;
-                txtComplemento.Enabled = false;
-                txtCpf.Enabled = false;
-                txtRG.Enabled = false;
-                txtCep.Enabled = false;
-                txtLougradouro.Enabled = false;
-                txtBairro.Enabled = false;
-                txtNumero.Enabled = false;
-                rbtMasculino.Enabled = false;
-                rbtFeminino.Enabled = false;
-                btnCep.Enabled = false;
-                btnFoto.Enabled = false;
-            }
-            else
-            {
-                txtNome.Enabled = true;
-                cbxFuncao.Enabled = true;
-                cbxEstado.Enabled = true;
-                cbxCidade.Enabled = true;
-                txtNome.Enabled = true;
-                txtEmail.Enabled = true;
-                txtNascimento.Enabled = true;
-                txtTelefone.Enabled = true;
-                txtCelular.Enabled = true;
-                txtNumero.Enabled = true;
-                txtComplemento.Enabled = true;
-                txtCpf.Enabled = true;
-                txtRG.Enabled = true;
-                txtCep.Enabled = true;
-                txtLougradouro.Enabled = true;
-                txtBairro.Enabled = true;
-                txtNumero.Enabled = true;
-                rbtMasculino.Enabled = true;
-                rbtFeminino.Enabled = true;
-                btnCep.Enabled = true;
-                btnFoto.Enabled = true;
-
-            }
-        }
-
         private void FrmMembro_Load(object sender, EventArgs e)
         {
             rbtMasculino.Checked = true;
@@ -108,9 +56,6 @@ namespace View.Add
             cbxCidade.SelectedValue = 9668;
 
             LimitarCampos();
-
-            //Quando a tela é carregada 
-            CarregarDados(pessoa, listaF, pessoa.Endereco);
         }
 
         private void LimitarCampos()
@@ -123,15 +68,11 @@ namespace View.Add
         }
 
         //Carrega dados do banco passado por parametro
-        private void CarregarDados(Membro membro, ArrayList listFuncao, Endereco endereco)
+        private void CarregarDados(Membro membro, Endereco endereco)
         {
             if (membro != null)
             {
-                for (int i = 0; i < listFuncao.Count; i++)
-                {
-                    Funcao funcao = (Funcao)listFuncao[i];
-                    cbxFuncao.Items.Add(funcao.Id + " - " + funcao.Descricao);
-                }
+                //membro.IdFuncao;
                 cbxEstado.SelectedValue = endereco.Cidade.Estado.Id;
                 cbxCidade.SelectedValue = endereco.Cidade.Id;
                 txtNome.Text = membro.Nome;
@@ -181,7 +122,7 @@ namespace View.Add
                     if (lblMensagem.Text.Equals("Membro não atualizado."))
                         lblMensagem.ForeColor = Color.Red;
                 }
-                else if (new MembroBLL().ValidarMembro(txtNome.Text))
+                else if (MembroBLL.ValidarMembro(txtNome.Text))
                 {
                     lblMensagem.ForeColor = Color.Orange;
                     lblMensagem.Text = "Membro já possui cadastro no sistema.";
@@ -189,11 +130,11 @@ namespace View.Add
                 else
                 {
                     ptbMembro.Image.Save(Application.StartupPath.ToString() + "\\fotos\\" + txtNome.Text + ".png", System.Drawing.Imaging.ImageFormat.Png);
-                    lblMensagem.Text = new MembroBLL().AddMembro(MontarMembro());
-                    if (lblMensagem.Text.Equals("Cadastro não realizado."))
-                        lblMensagem.ForeColor = Color.Red;
-                    else
+                    lblMensagem.Text = MembroBLL.AddMembro(MontarMembro());
+                    if (lblMensagem.Text.Equals("Cadastrado com sucesso."))
                         LimparCampos();
+                    else
+                        lblMensagem.ForeColor = Color.Red;
                 }
             }
         }
@@ -365,9 +306,194 @@ namespace View.Add
             this.Close();
         }
 
-        private void btnCep_Click(object sender, EventArgs e)
+        private void BtnCep_Click(object sender, EventArgs e)
         {
+            lblMensagem.ForeColor = Color.Red;
+            if (EnderecoBLL.ValidarEndereco(txtCep.Text))
+            {
+                var end = EnderecoBLL.GetEndereco(txtCep.Text);
+                if (end != null)
+                {
+                    //Exibe na tela os dados obtidos
+                    cbxEstado.SelectedValue = end.Cidade.Estado.Id;
+                    cbxCidade.SelectedValue = end.Cidade.Id;
+                    txtLougradouro.Text = end.Logradouro;
+                    txtBairro.Text = end.Bairro;
+                    txtNumero.Focus();
+                }
+                else
+                    lblMensagem.Text = "Endereco não encontrado.";
+            }
+            else
+            {
+                try
+                {
+                    var consulta = new Correios.AtendeClienteClient("AtendeClientePort");
+                    var resultado = consulta.consultaCEP(txtCep.Text);
 
+                    if (resultado != null)
+                    {
+                        cbxEstado.Text = resultado.uf;
+                        cbxCidade.Text = resultado.cidade;
+                        txtLougradouro.Text = resultado.end;
+                        txtBairro.Text = resultado.bairro;
+
+                        lblMensagem.Text = EnderecoBLL.AddEndereco(MontarEndereco());
+                        if (lblMensagem.Text.Equals("Cadastrado com sucesso."))
+                        {
+                            lblMensagem.ForeColor = Color.Blue;
+                            lblMensagem.Text = "Endereço localizado.";
+                            txtNumero.Focus();
+                        }
+                        else
+                            lblMensagem.Text = "Endereço não localizado.";
+                    }
+                    else
+                        lblMensagem.Text = "CEP não é válido!";
+                }
+                catch (FaultException ex)
+                {
+                    AddEndereco("Endereço não encontrado.", "Pesquisa de endereço");
+                    ex.ToString();
+                }
+                catch (EndpointNotFoundException ex)
+                {
+                    AddEndereco("Sem acesso a internet.", "Sem conexão");
+                    ex.ToString();
+                }
+            }
+        }
+
+        public void AddEndereco(string mensagem, string titulo)
+        {
+            MessageBox.Show(mensagem, titulo, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+            DialogResult dialogResult = MessageBox.Show("Gostaria de cadastrar manualmente?", "Cadastro de Endereço", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+                CarregarFormulario();
+        }
+
+        private void CarregarFormulario()
+        {
+            bool _found = false;
+            foreach (Form _openForm in Application.OpenForms)
+            {
+                if (_openForm is FrmEndereco)
+                {
+                    _openForm.Focus();
+                    _found = true;
+                }
+            }
+            if (!_found)
+            {
+                FrmEndereco form = new FrmEndereco(txtCep.Text);
+                form.Show();
+            }
+        }
+
+        private Endereco MontarEndereco()
+        {
+            Endereco end = new Endereco();
+            end.Cidade = CidadeBLL.GetCidades(cbxCidade.SelectedValue.ToString());
+            end.Cep = txtCep.Text;
+            end.Logradouro = txtLougradouro.Text;
+            end.Bairro = txtBairro.Text;
+            return end;
+        }
+
+        private void BtnFoto_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd1 = new OpenFileDialog();
+            ofd1.Multiselect = true;
+            ofd1.Title = "Selecionar Fotos";
+            ofd1.Filter = "Images (*.BMP;*.JPG;*.GIF,*.PNG,*.TIFF)|*.BMP;*.JPG;*.GIF;*.PNG;*.TIFF";
+            ofd1.CheckFileExists = true;
+            ofd1.CheckPathExists = true;
+            ofd1.FilterIndex = 2;
+            ofd1.RestoreDirectory = true;
+            ofd1.ReadOnlyChecked = true;
+            ofd1.ShowReadOnly = true;
+
+            if (ofd1.ShowDialog() == DialogResult.OK)
+            {
+                Bitmap bmp = new Bitmap(ofd1.FileName);
+                Bitmap bmp2 = new Bitmap(bmp, ptbMembro.Size);
+
+                ptbMembro.Image = bmp2;
+            }
+        }
+
+        private void CbxStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            AlterarCampos();
+        }
+
+        private void AlterarCampos()
+        {
+            if (cbxStatus.SelectedIndex == 1)
+            {
+                txtNome.Enabled = false;
+                cbxFuncao.Enabled = false;
+                cbxEstado.Enabled = false;
+                cbxCidade.Enabled = false;
+                txtNome.Enabled = false;
+                txtEmail.Enabled = false;
+                txtNascimento.Enabled = false;
+                txtTelefone.Enabled = false;
+                txtCelular.Enabled = false;
+                txtNumero.Enabled = false;
+                txtComplemento.Enabled = false;
+                txtCpf.Enabled = false;
+                txtRG.Enabled = false;
+                txtCep.Enabled = false;
+                txtLougradouro.Enabled = false;
+                txtBairro.Enabled = false;
+                txtNumero.Enabled = false;
+                rbtMasculino.Enabled = false;
+                rbtFeminino.Enabled = false;
+                btnCep.Enabled = false;
+                btnFoto.Enabled = false;
+            }
+            else
+            {
+                txtNome.Enabled = true;
+                cbxFuncao.Enabled = true;
+                cbxEstado.Enabled = true;
+                cbxCidade.Enabled = true;
+                txtNome.Enabled = true;
+                txtEmail.Enabled = true;
+                txtNascimento.Enabled = true;
+                txtTelefone.Enabled = true;
+                txtCelular.Enabled = true;
+                txtNumero.Enabled = true;
+                txtComplemento.Enabled = true;
+                txtCpf.Enabled = true;
+                txtRG.Enabled = true;
+                txtCep.Enabled = true;
+                txtLougradouro.Enabled = true;
+                txtBairro.Enabled = true;
+                txtNumero.Enabled = true;
+                rbtMasculino.Enabled = true;
+                rbtFeminino.Enabled = true;
+                btnCep.Enabled = true;
+                btnFoto.Enabled = true;
+            }
+        }
+
+        private void TxtCpf_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (txtCpf.Text.Length == 13)
+                txtRG.Focus();
+        }
+
+        private void CbxEstado_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //Lista Cidades
+            cbxCidade.DataSource = CidadeBLL.GetCidade(cbxEstado.SelectedValue.ToString());
+            cbxCidade.DisplayMember = "Descricao";
+            cbxCidade.ValueMember = "Id";
+
+            cbxCidade.Focus();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using DAL;
+﻿using System;
+using DAL;
 using DTO;
 
 namespace BLL
@@ -8,6 +9,16 @@ namespace BLL
         public static string UpdateMembro(Membro membro)
         {
             return MembroDAL.UpdateMembro(membro); ;
+        }
+
+        public static bool ValidarMembro(string nome)
+        {
+            return MembroDAL.ValidarMembro(nome);
+        }
+
+        public static string AddMembro(Membro membro)
+        {
+            throw new NotImplementedException();
         }
     }
 }
