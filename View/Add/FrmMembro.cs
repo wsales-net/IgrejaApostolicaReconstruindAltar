@@ -122,7 +122,11 @@ namespace View.Add
                     if (lblMensagem.Text.Equals("Membro não atualizado."))
                         lblMensagem.ForeColor = Color.Red;
                 }
+<<<<<<< HEAD
                 else if (MembroBLL.ValidarMembro(txtNome.Text))
+=======
+                else if (new MembroBLL().ValidarMembro(txtNome.Text)) //Parei aqui
+>>>>>>> ca0358fe4b87c675b99ed2d9e49d08f4a79aafb8
                 {
                     lblMensagem.ForeColor = Color.Orange;
                     lblMensagem.Text = "Membro já possui cadastro no sistema.";
@@ -164,27 +168,20 @@ namespace View.Add
             Membro membro = new Membro();
             string[] s = cbxFuncao.Text.Split('-');
 
+            membro.Nome = txtNome.Text;
+            membro.IdFuncao = int.Parse(s[0]);
+
             #region Salvar Foto
-            string antigocaminho = "";
-            if (pessoa != null)
+            if (this.pessoa != null)
             {
-                membro.Id = pessoa.Id;
-                antigocaminho = Application.StartupPath.ToString() + "\\fotos\\" + this.pessoa.Nome + ".png";
-                string novocaminho = Application.StartupPath.ToString() + "\\fotos\\" + txtNome.Text + ".png";
-                if (File.Exists(novocaminho))
-                    File.Delete(novocaminho);
-                File.Move(antigocaminho, novocaminho);
-                membro.Foto = Application.StartupPath.ToString() + "\\fotos\\" + txtNome.Text + ".png";
+                pessoa.Id = this.pessoa.Id;
+                ptbMembro.Image.Save(Application.StartupPath.ToString() + "\\fotos\\" + pessoa.Nome + ".png", ptbMembro.Image.RawFormat);
+                pessoa.Foto = Application.StartupPath.ToString() + "\\fotos\\" + txtNome.Text + ".png";
             }
-            else
-                membro.Foto = Application.StartupPath.ToString() + "\\fotos\\" + txtNome.Text + ".png";
             #endregion
 
-            membro.IdFuncao = int.Parse(s[0]);
             //membro.IdEndereco = new EnderecoDAO().getEndereco(txtCep.Text);
-            membro.Nome = txtNome.Text;
 
-            //Verificar o sexo selecionado
             if (rbtMasculino.Checked)
                 membro.Sexo = rbtMasculino.Text;
             else
